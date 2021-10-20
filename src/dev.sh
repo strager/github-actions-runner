@@ -50,6 +50,7 @@ elif [[ "$CURRENT_PLATFORM" == 'linux' ]]; then
     fi
 elif [[ "$CURRENT_PLATFORM" == 'darwin' ]]; then
     RUNTIME_ID='osx-x64'
+    #RUNTIME_ID='osx-arm64'
 fi
 
 if [[ -n "$DEV_TARGET_RUNTIME" ]]; then
@@ -71,7 +72,7 @@ elif [[ "$CURRENT_PLATFORM" == 'linux' ]]; then
        exit 1
     fi
 elif [[ "$CURRENT_PLATFORM" == 'darwin' ]]; then
-    if [[ ("$RUNTIME_ID" != 'osx-x64') ]]; then
+    if [[ ("$RUNTIME_ID" != 'osx-x64') && ("$RUNTIME_ID" != 'osx-arm64') ]]; then
        echo "Failed: Can't build $RUNTIME_ID package $CURRENT_PLATFORM" >&2
        exit 1
     fi
