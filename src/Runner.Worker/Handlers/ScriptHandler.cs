@@ -276,6 +276,9 @@ namespace GitHub.Runner.Worker.Handlers
                 arguments = $"\"{macOSRunInvoker.Replace("\"", "\\\"")}\" \"{fileName.Replace("\"", "\\\"")}\" {arguments}";
                 fileName = node12;
             }
+
+            arguments = $"-arch arm64 \"{fileName.Replace("\"", "\\\"")}\" {arguments}";
+            fileName = "/usr/bin/arch";
 #endif
             var systemConnection = ExecutionContext.Global.Endpoints.Single(x => string.Equals(x.Name, WellKnownServiceEndpointNames.SystemVssConnection, StringComparison.OrdinalIgnoreCase));
             if (systemConnection.Data.TryGetValue("GenerateIdTokenUrl", out var generateIdTokenUrl) && !string.IsNullOrEmpty(generateIdTokenUrl))
